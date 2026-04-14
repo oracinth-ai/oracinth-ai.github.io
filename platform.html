@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Platform architecture for Oracinth MotionOS." name="description"/>
+<title>Platform | Oracinth MotionOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        .technical-grid { background-image: radial-gradient(circle, #c2c8c4 0.5px, transparent 0.5px); background-size: 40px 40px; }
+        .editorial-shadow { box-shadow: 0px 24px 48px rgba(27, 28, 21, 0.06); }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = { theme: { extend: { colors: { primary: "#071511", secondary: "#ce1912", surface: "#fbfaed", "surface-container-low": "#f5f4e7", "surface-container": "#efeee2", "surface-container-high": "#eae9dc", "surface-container-lowest": "#ffffff", "on-surface": "#1b1c15", "on-surface-variant": "#424845", "outline-variant": "#c2c8c4" }, fontFamily: { headline: ["Manrope"], body: ["Manrope"] } } } }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<nav class="fixed top-0 w-full z-50 bg-[#fbfaed]/85 backdrop-blur-xl border-b border-[#c2c8c4]/20">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 py-6 flex items-center justify-between gap-8">
+<a class="text-2xl font-extrabold tracking-tighter text-primary uppercase" href="index.html">Oracinth</a>
+<div class="hidden xl:flex items-center gap-8 font-bold tracking-tight">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="index.html">Home</a>
+<a class="text-primary border-b-2 border-secondary pb-1" href="platform.html">Platform</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="products.html">Products</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="security.html">Security</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="implementation.html">Implementation</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="about.html">About</a>
+</div>
+<a class="bg-secondary text-white px-6 py-3 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" href="contact.html">Book Demo</a>
+</div>
+</nav>
+
+<main class="pt-24">
+<section class="technical-grid">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="text-xs uppercase tracking-[0.28em] font-bold text-secondary">Oracinth MotionOS Platform</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-primary mt-6 mb-8">One platform for logistics data, workflows, and intelligent action.</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-3xl">Oracinth MotionOS is the foundation for modern logistics execution. It unifies data, models operations, powers workflows, and deploys AI inside real business processes.</p>
+</div>
+<div class="lg:col-span-4 text-right">
+<div class="inline-flex px-4 py-2 border border-outline-variant/40 text-[10px] uppercase tracking-[0.22em] font-bold">Closed-loop logistics operations</div>
+</div>
+</div>
+</section>
+
+<section class="bg-surface-container-low py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12">
+<div class="max-w-3xl mb-16">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary mb-6">How Oracinth is delivered</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-0.5 bg-outline-variant/20">
+<div class="bg-surface-container-lowest p-8"><div class="text-secondary font-bold mb-4">Step 1</div><h3 class="text-2xl font-bold mb-3">Connect</h3><p class="text-on-surface-variant">Oracinth connects structured and unstructured logistics data across internal systems and partner sources.</p></div>
+<div class="bg-surface-container-lowest p-8"><div class="text-secondary font-bold mb-4">Step 2</div><h3 class="text-2xl font-bold mb-3">Model</h3><p class="text-on-surface-variant">We turn that data into live operational objects like shipments, containers, invoices, depots, customers, vendors, and exceptions.</p></div>
+<div class="bg-surface-container-lowest p-8"><div class="text-secondary font-bold mb-4">Step 3</div><h3 class="text-2xl font-bold mb-3">Operationalize</h3><p class="text-on-surface-variant">We build role-based workflows, case views, queues, approvals, and action screens for the teams doing the work.</p></div>
+<div class="bg-surface-container-lowest p-8"><div class="text-secondary font-bold mb-4">Step 4</div><h3 class="text-2xl font-bold mb-3">Augment with AI</h3><p class="text-on-surface-variant">We add AI functions, agents, document extraction, and guided decision support where they improve speed, accuracy, and scale.</p></div>
+<div class="bg-surface-container-lowest p-8"><div class="text-secondary font-bold mb-4">Step 5</div><h3 class="text-2xl font-bold mb-3">Control and Improve</h3><p class="text-on-surface-variant">We monitor outcomes, measure workflow performance, track AI behavior, and continuously improve operations.</p></div>
+</div>
+</div>
+</section>
+
+<section class="py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12">
+<div class="max-w-5xl mb-16">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary mb-6">The architecture of Oracinth MotionOS</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Oracinth MotionOS is delivered as seven product suites that work together across data integration, operational modeling, workflows, AI, decision support, ecosystem collaboration, and governance.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Data foundation</p><h3 class="text-2xl font-bold mb-3">Oracinth PulseGrid</h3><p class="text-on-surface-variant">The live integration layer for systems, events, files, emails, and operational records.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Operational intelligence layer</p><h3 class="text-2xl font-bold mb-3">Oracinth RealityGraph</h3><p class="text-on-surface-variant">The digital model of how your logistics business actually works across objects, relationships, state, and actions.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Execution layer</p><h3 class="text-2xl font-bold mb-3">Oracinth ActionDesk</h3><p class="text-on-surface-variant">The workspace where teams review, decide, approve, escalate, resolve, and write back into source systems.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">AI layer</p><h3 class="text-2xl font-bold mb-3">Oracinth Cognition Studio</h3><p class="text-on-surface-variant">LogicWorks, AgentDock, DocStream AI, CommandChat, ModelSwitch, and EvalForge for operational AI inside governed workflows.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Decision layer</p><h3 class="text-2xl font-bold mb-3">Oracinth SignalCore</h3><p class="text-on-surface-variant">SignalWatch, RootLens, and ScenarioOps for alerts, investigation, cohorting, optimization, and scenario planning.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Collaboration layer</p><h3 class="text-2xl font-bold mb-3">Oracinth PartnerMesh</h3><p class="text-on-surface-variant">Secure, role-based collaboration across shippers, carriers, vendors, warehouse partners, and brokers.</p></div>
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/20 editorial-shadow"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Governance layer</p><h3 class="text-2xl font-bold mb-3">Oracinth TrustLayer</h3><p class="text-on-surface-variant">Permissions, audit, observability, approval controls, policy enforcement, and responsible AI oversight.</p></div>
+</div>
+</div>
+</section>
+
+<section class="bg-primary text-white py-24 md:py-32">
+<div class="max-w-[1200px] mx-auto px-8 md:px-12">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter mb-8">Built for closed-loop logistics operations</h2>
+<p class="text-lg md:text-xl text-white/75 leading-relaxed max-w-4xl">Many systems stop at reporting. Some stop at workflow. Others stop at AI assistance. Oracinth is built for full operational execution: identify the issue, understand the context, recommend the best next action, let the right person decide, update the system, measure the outcome, and improve the process over time.</p>
+<div class="mt-12">
+<a class="inline-flex bg-white text-primary px-8 py-4 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" href="contact.html">Book a platform walkthrough</a>
+</div>
+</div>
+</section>
+
+<footer class="bg-[#071511] text-[#fbfaed] pt-16 pb-10">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 flex flex-col md:flex-row justify-between gap-8">
+<p class="text-[#c2c8c4] max-w-md">Oracinth MotionOS is the AI operating system for logistics execution, visibility, and decision-making.</p>
+<div class="flex flex-wrap gap-6 text-[#c2c8c4]">
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms</a>
+<a href="https://www.linkedin.com/" rel="noreferrer" target="_blank">LinkedIn</a>
+<a href="contact.html">Request Demo</a>
+</div>
+</div>
+</footer>
+</body></html>

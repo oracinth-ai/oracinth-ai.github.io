@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Demo | Oracinth MotionOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = { theme: { extend: { colors: { primary: "#071511", secondary: "#ce1912", surface: "#fbfaed", "surface-container-low": "#f5f4e7", "surface-container-lowest": "#ffffff", "on-surface": "#1b1c15", "on-surface-variant": "#424845", "outline-variant": "#c2c8c4" }, fontFamily: { headline: ["Manrope"], body: ["Manrope"] } } } }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body">
+<nav class="fixed top-0 w-full z-50 bg-[#fbfaed]/85 backdrop-blur-xl border-b border-[#c2c8c4]/20">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 py-6 flex items-center justify-between gap-8">
+<a class="text-2xl font-extrabold tracking-tighter text-primary uppercase" href="index.html">Oracinth</a>
+<div class="hidden xl:flex items-center gap-8 font-bold tracking-tight">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="platform.html">Platform</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="products.html">Products</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="security.html">Security</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="implementation.html">Implementation</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="about.html">About</a>
+</div>
+<a class="bg-secondary text-white px-6 py-3 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" href="contact.html">Book Demo</a>
+</div>
+</nav>
+<main class="pt-24">
+<section class="bg-surface-container-low py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12">
+<span class="text-xs uppercase tracking-[0.28em] font-bold text-secondary">Contact / Book Demo</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-primary mt-6 mb-8">See how Oracinth fits your operations.</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-4xl">Book a conversation with our team to explore how Oracinth can support your logistics workflows, data environment, and operational priorities.</p>
+</div>
+</section>
+<section class="py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-4">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tighter text-primary mb-6">Let's talk about your highest-value workflow</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Whether you want to improve shipment recovery, billing resolution, partner coordination, or operational visibility, we can show how Oracinth can be applied to your business.</p>
+</div>
+<div class="lg:col-span-8">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-surface-container-lowest p-8 border border-outline-variant/20">
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Name<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="text" name="name"/></label>
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Company<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="text" name="company"/></label>
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Work Email<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="email" name="email"/></label>
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Role<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="text" name="role"/></label>
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Primary Use Case<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="text" name="use_case"/></label>
+<label class="text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Current Systems<input class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 focus:border-primary focus:ring-0" type="text" name="systems"/></label>
+<label class="md:col-span-2 text-xs uppercase tracking-[0.18em] font-bold text-on-surface-variant">Message<textarea class="mt-3 w-full border-0 border-b border-outline-variant bg-transparent px-0 py-3 min-h-32 focus:border-primary focus:ring-0" name="message"></textarea></label>
+<div class="md:col-span-2 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+<button class="bg-secondary text-white px-8 py-4 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" type="submit">Request a Demo</button>
+<p class="text-sm text-on-surface-variant">Email: hello@oracinth.com</p>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#071511] text-[#fbfaed] pt-16 pb-10"><div class="max-w-[1440px] mx-auto px-8 md:px-12 flex flex-wrap gap-6 text-[#c2c8c4]"><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="https://www.linkedin.com/" rel="noreferrer" target="_blank">LinkedIn</a><a href="contact.html">Request Demo</a></div></footer>
+</body></html>

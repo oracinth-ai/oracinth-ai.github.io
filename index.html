@@ -1,598 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Oracinth AI builds modern digital experiences with speed, clarity, and craft.">
-  <title>Oracinth AI</title>
-  <style>
-    :root {
-      --bg: #f4efe6;
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: #fffdf8;
-      --text: #18221f;
-      --muted: #55625d;
-      --line: rgba(24, 34, 31, 0.1);
-      --accent: #0f766e;
-      --accent-2: #d97706;
-      --shadow: 0 24px 80px rgba(24, 34, 31, 0.12);
-      --radius: 28px;
-      --max: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(217, 119, 6, 0.18), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(15, 118, 110, 0.18), transparent 24%),
-        linear-gradient(180deg, #f7f3ec 0%, #efe6d8 100%);
-      min-height: 100vh;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page-shell {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 20px auto 40px;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 16px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 18px;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 253, 248, 0.78);
-      border: 1px solid rgba(24, 34, 31, 0.08);
-      border-radius: 999px;
-      box-shadow: 0 10px 32px rgba(24, 34, 31, 0.08);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .brand-mark {
-      width: 40px;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 1rem;
-      background: linear-gradient(135deg, var(--accent), #164e63);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible {
-      color: var(--text);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      margin-top: 28px;
-      align-items: stretch;
-    }
-
-    .hero-card,
-    .panel,
-    .metric,
-    .testimonial,
-    .cta {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 44px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -10% -30% auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(15, 118, 110, 0.24), transparent 70%);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.65);
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent-2);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin: 0;
-    }
-
-    h1 {
-      margin-top: 22px;
-      font-size: clamp(2.6rem, 8vw, 5.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-copy {
-      margin-top: 20px;
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.98rem;
-      font-weight: 700;
-      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      background: var(--text);
-      color: #fffdf8;
-    }
-
-    .button-secondary {
-      border-color: var(--line);
-      background: rgba(255, 255, 255, 0.55);
-      color: var(--text);
-    }
-
-    .hero-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .panel {
-      padding: 28px;
-    }
-
-    .panel-label {
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.8rem;
-    }
-
-    .panel strong {
-      display: block;
-      margin-top: 12px;
-      font-size: 2.4rem;
-      line-height: 1;
-      font-weight: 700;
-    }
-
-    .panel p {
-      margin-top: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .metric {
-      padding: 22px;
-    }
-
-    .metric strong {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      line-height: 1.5;
-      font-size: 0.95rem;
-    }
-
-    .section {
-      margin-top: 24px;
-      padding: 34px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 22px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2rem, 5vw, 3.6rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.7;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service {
-      padding: 24px;
-      border-radius: 24px;
-      background: var(--surface-strong);
-      border: 1px solid var(--line);
-    }
-
-    .service h3 {
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-    }
-
-    .service p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .testimonial {
-      padding: 28px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .testimonial p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
-    .quote-mark {
-      font-size: 3rem;
-      line-height: 0.8;
-      color: var(--accent-2);
-    }
-
-    .cta {
-      margin-top: 24px;
-      padding: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .cta-copy {
-      max-width: 580px;
-    }
-
-    .cta-copy h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .cta-copy p {
-      margin-top: 12px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 20px 6px 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 650ms ease, transform 650ms ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 980px) {
-      .hero,
-      .grid-3,
-      .stats,
-      .cta {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        gap: 18px;
-      }
-
-      .section-head,
-      .cta,
-      footer,
-      .topbar {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .topbar {
-        border-radius: 28px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .page-shell {
-        width: min(calc(100% - 20px), var(--max));
-        margin-top: 10px;
-      }
-
-      .hero-card,
-      .panel,
-      .section,
-      .cta {
-        padding: 24px;
-      }
-
-      h1 {
-        font-size: clamp(2.4rem, 14vw, 4.5rem);
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page-shell">
-    <header class="topbar reveal">
-      <a class="brand" href="#top" aria-label="Oracinth AI home">
-        <span class="brand-mark">OA</span>
-        <span>Oracinth AI</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#results">Results</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <article class="hero-card reveal">
-          <span class="eyebrow">Responsive web experiences</span>
-          <h1>Build a public-facing presence that feels sharp, modern, and ready to scale.</h1>
-          <p class="hero-copy">
-            Oracinth AI creates high-impact digital experiences with thoughtful design, clear storytelling,
-            and fast execution. This single-page site is lightweight, mobile-ready, and ideal for GitHub Pages deployment.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Start a project</a>
-            <a class="button button-secondary" href="#services">See what we do</a>
-          </div>
-          <div class="stats">
-            <div class="metric">
-              <strong>01</strong>
-              <span>Single-file setup that is simple to host and easy to maintain.</span>
-            </div>
-            <div class="metric">
-              <strong>100%</strong>
-              <span>Responsive layout tuned for phones, tablets, and desktops.</span>
-            </div>
-            <div class="metric">
-              <strong>Fast</strong>
-              <span>No external dependencies, just clean HTML, CSS, and a touch of JavaScript.</span>
-            </div>
-          </div>
-        </article>
-
-        <aside class="hero-side">
-          <section class="panel reveal">
-            <span class="panel-label">Launch-ready</span>
-            <strong>GitHub Pages</strong>
-            <p>
-              Publish straight from your repository and make the site publicly accessible with a reliable static hosting flow.
-            </p>
-          </section>
-          <section class="panel reveal">
-            <span class="panel-label">Built for clarity</span>
-            <strong>Minimal, elegant, effective</strong>
-            <p>
-              Clean hierarchy, warm editorial styling, and strong contrast help the site feel polished without being heavy.
-            </p>
-          </section>
-        </aside>
-      </section>
-
-      <section class="section hero-card reveal" id="services">
-        <div class="section-head">
-          <h2>What this site gives you</h2>
-          <p>
-            A professional landing page can act as your public business card, product teaser, or service showcase.
-            This version is designed to be easy to customize after deployment.
-          </p>
-        </div>
-        <div class="grid-3">
-          <article class="service">
-            <h3>Responsive Layout</h3>
-            <p>
-              Fluid sections, flexible grids, and mobile-friendly spacing keep the experience smooth across screen sizes.
-            </p>
-          </article>
-          <article class="service">
-            <h3>Fast Deployment</h3>
-            <p>
-              A single `index.html` is enough to publish on GitHub Pages, which makes setup quick and maintenance straightforward.
-            </p>
-          </article>
-          <article class="service">
-            <h3>Easy Customization</h3>
-            <p>
-              Update the copy, colors, and calls to action directly in one file without needing a build process.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section panel reveal" id="results">
-        <div class="section-head">
-          <h2>Why it works</h2>
-          <p>
-            Static websites win when you want speed, public access, low hosting complexity, and dependable performance.
-          </p>
-        </div>
-        <div class="grid-3">
-          <article class="testimonial">
-            <span class="quote-mark">“</span>
-            <p>
-              Lightweight code means the site loads quickly and is simple to audit, update, and ship.
-            </p>
-          </article>
-          <article class="testimonial">
-            <span class="quote-mark">“</span>
-            <p>
-              Public GitHub Pages hosting is a strong fit for portfolios, product intros, and landing pages.
-            </p>
-          </article>
-          <article class="testimonial">
-            <span class="quote-mark">“</span>
-            <p>
-              With one clean HTML file, future edits stay approachable even if you want to keep the stack minimal.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="cta reveal" id="contact">
-        <div class="cta-copy">
-          <h2>Ready to publish this site publicly?</h2>
-          <p>
-            The page is ready for a first commit. Next step is connecting this folder to your GitHub repository,
-            pushing the code, and enabling GitHub Pages from the repository settings.
-          </p>
-        </div>
-        <a class="button button-primary" href="mailto:hello@oracinth.ai">hello@oracinth.ai</a>
-      </section>
-    </main>
-
-    <footer>
-      <span>&copy; <span id="year"></span> Oracinth AI</span>
-      <span>Designed for public GitHub Pages hosting.</span>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Oracinth MotionOS is the AI operating system for logistics execution, visibility, and decision-making." name="description"/>
+<title>Oracinth MotionOS | The AI Operating System for Logistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
-      });
-    }, { threshold: 0.16 });
+        .technical-grid {
+            background-image: radial-gradient(circle, #c2c8c4 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 24px 48px rgba(27, 28, 21, 0.06);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              outline: "#737875",
+              primary: "#071511",
+              secondary: "#ce1912",
+              background: "#fbfaed",
+              surface: "#fbfaed",
+              "surface-container-low": "#f5f4e7",
+              "surface-container": "#efeee2",
+              "surface-container-high": "#eae9dc",
+              "surface-container-highest": "#e4e3d6",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1c15",
+              "on-surface-variant": "#424845",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c2c8c4"
+            },
+            fontFamily: {
+              headline: ["Manrope"],
+              body: ["Manrope"],
+              label: ["Manrope"]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<nav class="fixed top-0 w-full z-50 bg-[#fbfaed]/85 backdrop-blur-xl border-b border-[#c2c8c4]/20">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 py-6 flex items-center justify-between gap-8">
+<a class="text-2xl font-extrabold tracking-tighter text-primary uppercase" href="index.html">Oracinth</a>
+<div class="hidden xl:flex items-center gap-8 font-bold tracking-tight">
+<a class="text-primary border-b-2 border-secondary pb-1" href="index.html">Home</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="platform.html">Platform</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="products.html">Products</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="security.html">Security</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="implementation.html">Implementation</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="about.html">About</a>
+</div>
+<a class="bg-secondary text-white px-6 py-3 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" href="contact.html">Book Demo</a>
+</div>
+</nav>
 
-    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-  </script>
-</body>
-</html>
+<main class="pt-24">
+<section class="relative overflow-hidden technical-grid">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 py-24 md:py-36 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.28em] font-bold text-secondary mb-8">
+<span class="w-12 h-px bg-secondary"></span>
+                    Oracinth MotionOS
+                </span>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-headline font-extrabold tracking-tighter leading-[0.92] text-primary mb-8">
+                    Run logistics from one intelligent operating system.
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-3xl">
+                    Oracinth brings together data, workflows, documents, AI, and human decisions into one platform for logistics execution, control, and optimization.
+                </p>
+<div class="mt-12 flex flex-col sm:flex-row gap-4">
+<a class="bg-primary text-white px-8 py-4 rounded-md font-bold tracking-tight inline-flex items-center gap-2 hover:opacity-90 transition-all" href="contact.html">
+                        Book a Demo
+                        <span class="material-symbols-outlined">north_east</span>
+</a>
+<a class="border border-primary text-primary px-8 py-4 rounded-md font-bold tracking-tight hover:bg-primary hover:text-white transition-all inline-flex items-center gap-2" href="platform.html">
+                        Explore the Platform
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-5">
+<div class="bg-surface-container-lowest p-6 md:p-8 border border-outline-variant/30 editorial-shadow">
+<div class="aspect-[4/5] bg-surface-container-low relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRVsofovTPOXvLS31JqHi1CPTFjydziPhysY_64mSYZkkQFC_Cu1CtynUIDE6o_ce7j24gdhXwolmV1Ch0mgil6IOKtc1la0b3pbhNwQAMoWhwCbiJ4OvYRHnvBTFtEdK7LmtpasjcldsxWYfInA5pbY-y2F5DZ9WzuqXF1XlCzyW3RJroRACCrpXrJySRMgSZ8ohsoZZXr7__hGno6Qcc7MxxM_G6_eBKCTejERyVJjTisOaWqJIqL11H2MczbDNt0H19DOZ7xKU" alt="Logistics control tower environment"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#071511]/35 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<p class="text-[10px] uppercase tracking-[0.26em] font-bold mb-2">Platform positioning</p>
+<p class="text-sm max-w-xs">The AI operating system for logistics execution, visibility, and decision-making.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="bg-surface-container-low py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-4">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tighter text-primary mb-6">Logistics breaks when data, teams, and decisions stay disconnected.</h2>
+</div>
+<div class="lg:col-span-8 space-y-6 text-lg text-on-surface-variant leading-relaxed">
+<p>Most logistics businesses still run critical operations across multiple systems, emails, spreadsheets, and manual handoffs. Shipment updates live in one tool. Billing data lives in another. Support teams work in inboxes. Planners use spreadsheets. Leadership sees reports too late.</p>
+<p>This creates delays, missed exceptions, invoice leakage, poor customer experience, low asset utilization, and slow decision-making.</p>
+<p class="text-primary font-semibold">Oracinth solves this by turning disconnected logistics operations into one live, action-ready system.</p>
+</div>
+</div>
+</section>
+
+<section class="py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12">
+<div class="max-w-5xl mb-16">
+<span class="text-xs uppercase tracking-[0.24em] font-bold text-secondary">Platform suites</span>
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary mt-5 mb-6">The product architecture behind Oracinth MotionOS.</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Oracinth MotionOS is organized into seven product suites so logistics teams can connect fragmented data, model real operations, run workflows, deploy AI, collaborate across partners, and govern every action from one live system.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0.5 bg-outline-variant/20">
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Data foundation</p><h3 class="text-2xl font-bold mb-4">Oracinth PulseGrid</h3><p class="text-on-surface-variant">Connect live APIs, files, events, and records from TMS, WMS, ERP, finance, CRM, telematics, email, and partner systems.</p></div>
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Operational ontology</p><h3 class="text-2xl font-bold mb-4">Oracinth RealityGraph</h3><p class="text-on-surface-variant">Model logistics as live business objects such as shipments, routes, assets, invoices, exceptions, tasks, customers, and vendors.</p></div>
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Execution workspace</p><h3 class="text-2xl font-bold mb-4">Oracinth ActionDesk</h3><p class="text-on-surface-variant">Give operators, planners, finance teams, and managers one workspace to investigate, decide, act, and write updates back to systems.</p></div>
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">AI suite</p><h3 class="text-2xl font-bold mb-4">Oracinth Cognition Studio</h3><p class="text-on-surface-variant">Deploy LogicWorks, AgentDock, DocStream AI, CommandChat, ModelSwitch, and EvalForge inside real logistics workflows.</p></div>
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Decision layer</p><h3 class="text-2xl font-bold mb-4">Oracinth SignalCore</h3><p class="text-on-surface-variant">Use SignalWatch, RootLens, and ScenarioOps to detect risk, investigate patterns, and improve operational decisions.</p></div>
+<div class="bg-surface-container-lowest p-10"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Ecosystem collaboration</p><h3 class="text-2xl font-bold mb-4">Oracinth PartnerMesh</h3><p class="text-on-surface-variant">Collaborate securely across shippers, carriers, warehouses, customs brokers, and service providers in governed shared workflows.</p></div>
+<div class="bg-surface-container-lowest p-10 md:col-span-2"><p class="text-xs uppercase tracking-[0.22em] text-secondary font-bold mb-3">Governance layer</p><h3 class="text-2xl font-bold mb-4">Oracinth TrustLayer</h3><p class="text-on-surface-variant">Control access, monitor activity, govern AI, enforce approvals, and maintain full operational visibility across every workflow.</p></div>
+</div>
+</div>
+</section>
+
+<section class="bg-primary text-white py-24 md:py-32 relative overflow-hidden">
+<div class="absolute inset-0 technical-grid opacity-10"></div>
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 relative z-10">
+<div class="max-w-3xl mb-16">
+<span class="text-xs uppercase tracking-[0.24em] font-bold text-[#ffb4a9]">Built for the decisions logistics teams make every day</span>
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter mt-5 mb-6">Featured use cases</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Shipment Exception Recovery</h3><p class="text-white/70">Detect at-risk shipments, prioritize by business impact, and guide teams through recovery actions.</p></div>
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Invoice Dispute Resolution</h3><p class="text-white/70">Connect finance, billing, contracts, shipment data, and customer communication in one case workflow.</p></div>
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Load &amp; Route Optimization</h3><p class="text-white/70">Identify consolidation and resource allocation opportunities with operational constraints built in.</p></div>
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Partner Collaboration</h3><p class="text-white/70">Run shared workflows across carriers, warehouses, brokers, and customers without losing control.</p></div>
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Document Intelligence</h3><p class="text-white/70">Extract and validate data from invoices, PODs, contracts, and shipping documents automatically.</p></div>
+<div class="bg-white/5 border border-white/10 p-8"><h3 class="text-2xl font-bold mb-4">Root Cause Analysis</h3><p class="text-white/70">Understand why delays, cost leakage, service failures, or billing errors are happening repeatedly.</p></div>
+</div>
+</div>
+</section>
+
+<section class="py-24 md:py-32">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-5">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary mb-6">More than visibility. More than automation. More than AI.</h2>
+</div>
+<div class="lg:col-span-7 space-y-6 text-lg leading-relaxed text-on-surface-variant">
+<p>Oracinth is designed for logistics businesses that need execution, not just reporting.</p>
+<p>Instead of giving teams another dashboard or chatbot, Oracinth gives them an operating system where data, workflows, AI, and actions work together.</p>
+<p class="text-primary font-semibold">That means fewer manual handoffs, faster exception resolution, better customer response, stronger margin control, and measurable improvement in day-to-day logistics performance.</p>
+</div>
+</div>
+</section>
+
+<section class="bg-surface-container-low py-24 md:py-32">
+<div class="max-w-[1200px] mx-auto px-8 md:px-12 text-center">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-primary mb-6">Turn logistics complexity into operational control.</h2>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-3xl mx-auto mb-12">See how Oracinth can unify your data, model your operations, and help your teams make better decisions at speed.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<a class="bg-secondary text-white px-8 py-4 rounded-md font-bold tracking-tight hover:opacity-90 transition-all" href="contact.html">Book Demo</a>
+<a class="border border-primary text-primary px-8 py-4 rounded-md font-bold tracking-tight hover:bg-primary hover:text-white transition-all" href="contact.html">Talk to Our Team</a>
+</div>
+</div>
+</section>
+
+<footer class="bg-[#071511] text-[#fbfaed] pt-20 pb-12">
+<div class="max-w-[1440px] mx-auto px-8 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<div class="text-3xl font-black mb-4 uppercase">Oracinth MotionOS</div>
+<p class="text-[#c2c8c4] max-w-sm">Oracinth MotionOS helps logistics companies unify fragmented data, model real operations, run workflows, deploy AI agents, and turn insights into actions.</p>
+</div>
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.24em] text-secondary font-bold mb-6">Navigation</h3>
+<div class="grid gap-3 text-[#c2c8c4]">
+<a href="platform.html">Platform</a>
+<a href="products.html">Products</a>
+<a href="solutions.html">Solutions</a>
+<a href="security.html">Security</a>
+<a href="implementation.html">Implementation</a>
+<a href="about.html">About</a>
+</div>
+</div>
+<div>
+<h3 class="text-[10px] uppercase tracking-[0.24em] text-secondary font-bold mb-6">Footer</h3>
+<div class="grid gap-3 text-[#c2c8c4]">
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms</a>
+<a href="https://www.linkedin.com/" rel="noreferrer" target="_blank">LinkedIn</a>
+<a href="contact.html">Request Demo</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
